@@ -1,4 +1,4 @@
-import BoardPiece from '../constants'
+import { BoardPiece } from '../constants'
 
 type Row = [BoardPiece, BoardPiece, BoardPiece]
 
