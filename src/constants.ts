@@ -24,6 +24,8 @@ export class Rules {
 
   static BOARD_LEN = 3
 
+  static MAX_SQUARES = 9
+
   static PLAYERS = 2
 }
 
