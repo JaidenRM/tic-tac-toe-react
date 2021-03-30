@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { BoardPiece } from '../../constants'
+import { useGameContext } from '../../contexts/game/gameContext'
 
 export interface IBoardSquare {
   boardPiece: BoardPiece
+  position: number
   height: string
   width: string
 }
@@ -18,8 +20,24 @@ const StyledSquare = styled.div<{ height: string; width: string }>`
   width: ${(props) => (props.height && props.width ? props.width : '10rem')};
 `
 
-export const BoardSquare = ({ boardPiece, height, width }: IBoardSquare) => (
-  <StyledSquare height={height} width={width}>
-    <p>{boardPiece.toString()}</p>
-  </StyledSquare>
-)
+export const BoardSquare = ({
+  boardPiece,
+  position,
+  height,
+  width,
+}: IBoardSquare) => {
+  const [piece, setPiece] = useState(boardPiece)
+  const [gameState, handlers] = useGameContext()
+
+  const clickHandler = () => {
+    if (piece === BoardPiece.None) {
+      setPiece(handlers.makeMove(position))
+    }
+  }
+
+  return (
+    <StyledSquare height={height} width={width} onClick={clickHandler}>
+      <p>{piece.toString()}</p>
+    </StyledSquare>
+  )
+}

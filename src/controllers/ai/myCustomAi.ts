@@ -30,7 +30,7 @@ function rateMove(state: IBoardState, self: BoardPiece, position: number) {
   let rating = 0
 
   Object.keys(MoveDir).forEach((movementDir) => {
-    if (Number.isNaN(Number(movementDir))) {
+    if (!Number.isNaN(Number(movementDir))) {
       const move = Number(movementDir)
       let posValid = true
       let negValid = true

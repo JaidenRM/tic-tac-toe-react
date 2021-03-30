@@ -19,6 +19,14 @@ export enum MoveDir {
   LeftDiagonal = 4,
 }
 
+export enum PlayState {
+  None = 'None',
+  InGame = 'InGame',
+  PieceWon = 'PieceWon',
+  BoardFull = 'BoardFull',
+  GameError = 'GameError',
+}
+
 export class Rules {
   static WIN = 3
 
@@ -27,6 +35,8 @@ export class Rules {
   static MAX_SQUARES = 9
 
   static PLAYERS = 2
+
+  static FIRST_PLAYER = BoardPiece.X
 }
 
 // export default BoardPiece

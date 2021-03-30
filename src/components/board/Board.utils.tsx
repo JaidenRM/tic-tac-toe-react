@@ -1,33 +1,39 @@
+import { BoardPiece, Rules } from '../../constants'
 import { BoardSquare, IBoardSquare } from '../board-square/BoardSquare'
 
-export const createBoardSquares = (
-  props: IBoardSquare,
-  iterations: number = 1
-) => {
+export const createBoardSquares = (row: number, iterations: number = 1) => {
   const squares: JSX.Element[] = []
 
   for (let i = 0; i < iterations; i += 1) {
-    squares.push(BoardSquare({ ...props }))
+    squares.push(
+      BoardSquare({
+        boardPiece: BoardPiece.None,
+        height: '10rem',
+        width: '10rem',
+        position: row * Rules.BOARD_LEN + i,
+      })
+    )
   }
 
   return squares
 }
 
 export const createGroupedBoardSquares = (
-  props: IBoardSquare,
   iterations: number,
   groupSize: number
 ) => {
   const groupedSquares: JSX.Element[][] = []
   let counter = iterations
+  let numOfLoops = 0
 
   while (counter > 0) {
     if (counter > groupSize)
-      groupedSquares.push(createBoardSquares(props, groupSize))
+      groupedSquares.push(createBoardSquares(numOfLoops, groupSize))
     else if (counter > 0)
-      groupedSquares.push(createBoardSquares(props, counter))
+      groupedSquares.push(createBoardSquares(numOfLoops, counter))
 
     counter -= groupSize
+    numOfLoops += 1
   }
 
   return groupedSquares

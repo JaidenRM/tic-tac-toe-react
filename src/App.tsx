@@ -1,10 +1,14 @@
 import React from 'react'
 import Board from './components/board/Board'
+import { GameProvider } from './contexts/game/gameContext'
+import GameScreen from './screens/game/GameScreen'
 
 function App() {
   return (
     <div className="App">
-      <Board />
+      <GameProvider>
+        <GameScreen />
+      </GameProvider>
     </div>
   )
 }
