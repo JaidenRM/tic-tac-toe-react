@@ -1,23 +1,14 @@
 import React from 'react'
+import Board from './components/board/Board'
+import { GameProvider } from './contexts/game/gameContext'
+import GameScreen from './screens/game/GameScreen'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          Edit
-          <code>src/App.tsx</code>
-          and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <GameProvider>
+        <GameScreen />
+      </GameProvider>
     </div>
   )
 }

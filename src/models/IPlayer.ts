@@ -5,6 +5,6 @@ export interface IPlayer {
   wins: number
   losses: number
   boardPiece: BoardPiece
-  hasMove: boolean
-  isAi: boolean
+  hasMove?: boolean
+  isAi?: boolean
 }
