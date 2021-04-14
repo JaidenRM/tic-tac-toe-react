@@ -1,18 +1,17 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import Board from '../../components/board/Board'
 import PlayerHud from '../../components/player-hud/PlayerHud'
 import { BoardPiece } from '../../constants'
-import {
-  GameProvider,
-  IGameState,
-  useGameContext,
-} from '../../contexts/game/gameContext'
-import { IPlayer } from '../../models/IPlayer'
+import { useGameContext } from '../../contexts/game/gameContext'
 
 const GameWrapper = styled.div`
-  border: 1px solid black;
+  border: 1px solid ${({ theme }) => theme.palette.common.black};
   border-radius: 5px;
+  background-color: ${({ theme }) => theme.palette.primary.main};
+  width: 800px;
+  margin: 2rem auto;
+  text-align: center;
 `
 
 const GameScreen = () => {

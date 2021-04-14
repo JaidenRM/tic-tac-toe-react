@@ -20,6 +20,11 @@ const StyledSquare = styled.div<{ height: string; width: string }>`
   width: ${(props) => (props.height && props.width ? props.width : '10rem')};
 `
 
+const StyledPiece = styled.p`
+  float: left;
+  margin-left: 2rem;
+`
+
 export const BoardSquare = ({
   boardPiece,
   position,
@@ -37,7 +42,7 @@ export const BoardSquare = ({
 
   return (
     <StyledSquare height={height} width={width} onClick={clickHandler}>
-      <p>{piece.toString()}</p>
+      <StyledPiece>{piece.toString()}</StyledPiece>
     </StyledSquare>
   )
 }

@@ -1,11 +1,13 @@
 import React from 'react'
-import styled from 'styled-components'
 import { IPlayer } from '../../models/IPlayer'
-
-const HudWrapper = styled.div`
-  border: 1px solid black;
-  border-radius: 5px;
-`
+import {
+  HudWrapper,
+  Container,
+  ChildWrapper,
+  StyledMinorHeader,
+  StyledMajorHeader,
+  StyledText,
+} from './PlayerHud.styles'
 
 const PlayerHud = ({
   name,
@@ -15,15 +17,22 @@ const PlayerHud = ({
   hasMove,
   isAi,
 }: IPlayer) => {
-  const isTurn = hasMove ? <h1>YOUR TURN</h1> : <></>
-  const winLoss = <h3>{`${wins}W-${losses}L`}</h3>
+  const winLoss = `${wins}W-${losses}L`
 
   return (
     <HudWrapper>
-      {isTurn}
-      <h2>{boardPiece.toString()}</h2>
-      <span>{name}</span>
-      {winLoss}
+      <StyledMajorHeader hasMove={!!hasMove}>YOUR TURN</StyledMajorHeader>
+      <Container>
+        <ChildWrapper>
+          <StyledMinorHeader>[ {boardPiece.toString()} ]</StyledMinorHeader>
+        </ChildWrapper>
+        <ChildWrapper>
+          <StyledText>{name}</StyledText>
+        </ChildWrapper>
+        <ChildWrapper>
+          <StyledMinorHeader>{winLoss}</StyledMinorHeader>
+        </ChildWrapper>
+      </Container>
     </HudWrapper>
   )
 }

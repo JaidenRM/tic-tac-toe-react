@@ -1,8 +1,15 @@
 import React, { useEffect } from 'react'
-import { BoardPiece, Rules } from '../../constants'
+import styled from 'styled-components'
+import { Rules } from '../../constants'
 import { useGameContext } from '../../contexts/game/gameContext'
-import { BoardSquare, IBoardSquare } from '../board-square/BoardSquare'
 import { createGroupedBoardSquares } from './Board.utils'
+
+const BoardWrapper = styled.div`
+  margin: 2rem auto;
+`
+const RowWrapper = styled.div`
+  line-height: 0;
+`
 
 const BoardErrored = () => <h1>ERROR!</h1>
 
@@ -17,11 +24,11 @@ const Board = () => {
   )
 
   return groupedSquares ? (
-    <div>
-      {groupedSquares.map((group) => (
-        <div>{group}</div>
+    <BoardWrapper>
+      {groupedSquares.map((group, index) => (
+        <RowWrapper key={index.toString()}>{group}</RowWrapper>
       ))}
-    </div>
+    </BoardWrapper>
   ) : (
     <BoardErrored />
   )

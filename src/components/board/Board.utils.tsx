@@ -1,3 +1,4 @@
+import React from 'react'
 import { BoardPiece, Rules } from '../../constants'
 import { BoardSquare, IBoardSquare } from '../board-square/BoardSquare'
 
@@ -6,12 +7,13 @@ export const createBoardSquares = (row: number, iterations: number = 1) => {
 
   for (let i = 0; i < iterations; i += 1) {
     squares.push(
-      BoardSquare({
-        boardPiece: BoardPiece.None,
-        height: '10rem',
-        width: '10rem',
-        position: row * Rules.BOARD_LEN + i,
-      })
+      <BoardSquare
+        boardPiece={BoardPiece.None}
+        height="7.5rem"
+        width="7.5rem"
+        position={row * Rules.BOARD_LEN + i}
+        key={i}
+      />
     )
   }
 
